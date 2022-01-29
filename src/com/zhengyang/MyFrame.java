@@ -1,10 +1,28 @@
 package com.zhengyang;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MyFrame extends JFrame implements KeyListener {
+
+    //store all the background
+
+    private List<BackGround> allBg = new ArrayList<>();
+
+    //store current background
+
+    private BackGround nowBg = new BackGround();
+
+    //double buffers
+    private Image offScreenImage = null;
+
+
+
+
 
     public static void main(String[] args) {
         MyFrame myFrame = new MyFrame();
@@ -33,7 +51,37 @@ public class MyFrame extends JFrame implements KeyListener {
         //initalize image
         StaticValue.init();
 
+        //create all the scene
 
+        for (int i = 1; i <=3 ; i++) {
+            allBg.add(new BackGround(i,i==3?true:false));
+
+        }
+
+        //set first scene as current scene
+
+        nowBg = allBg.get(2);
+        //paint image
+        repaint();
+
+
+    }
+
+
+    @Override
+    public void paint(Graphics g) {
+        if (offScreenImage==null){
+            offScreenImage=createImage(800,600);
+        }
+        Graphics graphics = offScreenImage.getGraphics();
+        graphics.fillRect(0,0,800,600);
+
+        //draw background image
+
+        graphics.drawImage(nowBg.getBgImage(),0,0,this);
+
+        //put image in the window
+        g.drawImage(offScreenImage,0,0,this);
     }
 
     @Override
