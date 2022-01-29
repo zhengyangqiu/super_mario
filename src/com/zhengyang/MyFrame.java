@@ -30,6 +30,9 @@ public class MyFrame extends JFrame implements KeyListener {
         //set name of frame
         this.setTitle("superMario");
 
+        //initalize image
+        StaticValue.init();
+
 
     }
 
