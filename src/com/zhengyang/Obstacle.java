@@ -34,18 +34,14 @@ public class Obstacle {
         return show;
     }
 
-    public Obstacle(int x, int y, int type, BackGround bg){
-        this.x= x;
-        this.y=y;
-        this.type=type;
-        this.bg=bg;
-        show =StaticValue.obstacle.get(type);
+    public Obstacle(int x, int y, int type, BackGround bg) {
+        this.x = x;
+        this.y = y;
+        this.type = type;
+        this.bg = bg;
+        show = StaticValue.obstacle.get(type);
 
     }
-
-
-
-
 
 
 }

@@ -21,17 +21,14 @@ public class MyFrame extends JFrame implements KeyListener {
     private Image offScreenImage = null;
 
 
-
-
-
     public static void main(String[] args) {
         MyFrame myFrame = new MyFrame();
 
     }
 
-    public MyFrame(){
+    public MyFrame() {
         //set frame set
-        this.setSize(800,600);
+        this.setSize(800, 600);
         //put in the middle
         this.setLocationRelativeTo(null);
 
@@ -53,8 +50,8 @@ public class MyFrame extends JFrame implements KeyListener {
 
         //create all the scene
 
-        for (int i = 1; i <=3 ; i++) {
-            allBg.add(new BackGround(i,i == 3 ? true : false));
+        for (int i = 1; i <= 3; i++) {
+            allBg.add(new BackGround(i, i == 3 ? true : false));
 
         }
 
@@ -70,23 +67,23 @@ public class MyFrame extends JFrame implements KeyListener {
 
     @Override
     public void paint(Graphics g) {
-        if (offScreenImage==null){
-            offScreenImage=createImage(800,600);
+        if (offScreenImage == null) {
+            offScreenImage = createImage(800, 600);
         }
         Graphics graphics = offScreenImage.getGraphics();
-        graphics.fillRect(0,0,800,600);
+        graphics.fillRect(0, 0, 800, 600);
 
         //draw background image
 
-        graphics.drawImage(nowBg.getBgImage(),0,0,this);
+        graphics.drawImage(nowBg.getBgImage(), 0, 0, this);
 
         //draw obstacles
-        for (Obstacle ob:nowBg.getObstacleList()){
-            graphics.drawImage(ob.getShow(),ob.getX(),ob.getY(),this);
+        for (Obstacle ob : nowBg.getObstacleList()) {
+            graphics.drawImage(ob.getShow(), ob.getX(), ob.getY(), this);
         }
 
         //put image in the window
-        g.drawImage(offScreenImage,0,0,this);
+        g.drawImage(offScreenImage, 0, 0, this);
     }
 
     @Override
