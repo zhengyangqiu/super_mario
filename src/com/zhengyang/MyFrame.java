@@ -41,7 +41,7 @@ public class MyFrame extends JFrame implements KeyListener {
         //set close frame
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        //set  frame immunutable
+        //set  frame imunutable
         this.setResizable(false);
 
         this.addKeyListener(this);
@@ -54,13 +54,13 @@ public class MyFrame extends JFrame implements KeyListener {
         //create all the scene
 
         for (int i = 1; i <=3 ; i++) {
-            allBg.add(new BackGround(i,i==3?true:false));
+            allBg.add(new BackGround(i,i == 3 ? true : false));
 
         }
 
         //set first scene as current scene
 
-        nowBg = allBg.get(2);
+        nowBg = allBg.get(0);
         //paint image
         repaint();
 
@@ -79,6 +79,11 @@ public class MyFrame extends JFrame implements KeyListener {
         //draw background image
 
         graphics.drawImage(nowBg.getBgImage(),0,0,this);
+
+        //draw obstacles
+        for (Obstacle ob:nowBg.getObstacleList()){
+            graphics.drawImage(ob.getShow(),ob.getX(),ob.getY(),this);
+        }
 
         //put image in the window
         g.drawImage(offScreenImage,0,0,this);

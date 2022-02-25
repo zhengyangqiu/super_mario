@@ -106,7 +106,7 @@ public class StaticValue {
 
 
         }
-        //load obtacle
+        //load obstacle
         try {
             obstacle.add(ImageIO.read(new File(path+"brick.png")));
             obstacle.add(ImageIO.read(new File(path+"soil_up.png")));
@@ -162,19 +162,6 @@ public class StaticValue {
 
         }
 
-
-
-
-
     }
-
-
-
-
-
-
-
-
-
 
 }
